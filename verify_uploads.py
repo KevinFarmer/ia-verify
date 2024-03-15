@@ -1,5 +1,5 @@
 EMAIL = ''
-SKIP_THUMBNAILS = True
+SKIP_THUMBNAIL_CHECK = True
 
 import sys
 from internetarchive import get_session, get_item, get_files
@@ -31,7 +31,7 @@ for result in search_results:
     files = set(result['format'])
     if video_file_types & files:
         contains_video = True
-    if (thumb_file_types & files) or SKIP_THUMBNAILS:
+    if (thumb_file_types & files) or SKIP_THUMBNAIL_CHECK:
         contains_thumb = True
     if info_file_types & files:
         contains_info = True
