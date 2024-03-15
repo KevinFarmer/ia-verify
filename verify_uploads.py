@@ -1,8 +1,8 @@
 EMAIL = ''
-SKIP_THUMBNAIL_CHECK = True
+SKIP_THUMBNAIL_CHECK = False
 
 import sys
-from internetarchive import get_session, get_item, get_files
+from internetarchive import get_session
 
 video_file_types = {'Matroska', 'WebM', 'MPEG4'}
 thumb_file_types = {'JPEG', 'WebP', 'Thumbnail'}
