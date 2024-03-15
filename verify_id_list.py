@@ -1,5 +1,6 @@
-ID_FILE = './ids.txt'
+ID_FILE = './facejam.txt'
 SKIP_THUMBNAIL_CHECK = True
+CHUNK_SIZE = 250
 
 import sys
 from internetarchive import get_session
@@ -34,9 +35,10 @@ ids = [id for id in ids if id != '']
 ids = [f"youtube-{id}" for id in ids]
 
 
-id_chunks = list(chunks(ids, 200))
+id_chunks = list(chunks(ids, CHUNK_SIZE))
 
-for id_list in id_chunks:
+num = len(id_chunks)
+for i, id_list in enumerate(id_chunks):
     id_search = ' OR '.join(id_list)
 
     search_results = s.search_items(f'identifier:({id_search})', fields=['identifier', 'format'])
@@ -67,6 +69,7 @@ for id_list in id_chunks:
             youtube_id = id.removeprefix('youtube-')
             youtube_url = 'https://www.youtube.com/watch?v=' + youtube_id
             problem_id_file.write(youtube_url + '\n')
+    print(f"Finished batch {i} / {num}")
 
 input_file.close()
 missing_id_file.close()
