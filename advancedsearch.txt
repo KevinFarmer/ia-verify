@@ -1,0 +1,2 @@
+# Credit to fhm in the Archive of Pimps discord
+https://archive.org/advancedsearch.php?q=uploader%3A%22[URL_ENCODED_EMAIL]%22+AND+NOT+format%3A%28MPEG4+OR+h.264+OR+WebM+OR+Matroska%29&fl%5B%5D=identifier&sort%5B%5D=&sort%5B%5D=&sort%5B%5D=&rows=5000&page=1&output=json&callback=callback&save=yes

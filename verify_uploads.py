@@ -1,6 +1,7 @@
-EMAIL = ''
+EMAIL = 'kevin.farmer96@gmail.com'
 SKIP_THUMBNAILS = True
 
+import sys
 from internetarchive import get_session, get_item, get_files
 
 video_file_types = {'Matroska', 'WebM', 'MPEG4'}
@@ -9,6 +10,7 @@ info_file_types = {'JSON'}
 
 if EMAIL == '':
     print('Please enter your email on line 1')
+    sys.exit(1)
 
 f = open('upload_issues.txt', 'w')
 f2 = open('problem_ids.txt', 'w')
