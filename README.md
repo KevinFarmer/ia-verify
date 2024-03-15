@@ -1,6 +1,6 @@
 # ia-verify
 
-To verify you Internet Archive items uploaded by TubeUp
+To verify your Internet Archive items uploaded by TubeUp
 
 Enter your IA account email in the single quotes on line 1
 
