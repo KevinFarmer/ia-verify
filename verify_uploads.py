@@ -1,4 +1,4 @@
-EMAIL = 'kevin.farmer96@gmail.com'
+EMAIL = ''
 SKIP_THUMBNAILS = True
 
 import sys
