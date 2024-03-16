@@ -11,9 +11,13 @@ Example: ids.txt, AchievementHunter.txt, roosterteeth.txt
 
 This command reads in that file of YouTube links, sorts them randomly (to help avoid conflicts with others), and then loops through them one by one and runs the tubeup command on them
 
+
+### Helpful Resource
+[Navigating in Powershell](https://www.itprotoday.com/powershell/how-use-powershell-navigate-windows-folder-structure)
+
 ## Windows:
 - Open Powershell
-- Navigate to the folder where the file you downloaded is located (or copy the file to the folder when powershell opens)
+- Navigate to the folder where the file your downloaded file is located (or copy the file to the folder when powershell opens)
 
 - You can now run the following command in Powershell to run tubeup, replacing [channelname] with the chosen file name:
 	
