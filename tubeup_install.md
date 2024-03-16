@@ -39,3 +39,6 @@ It will ask you whether you want to install a package for every package it downl
 
 
 ## Now you should have choco, Python, pip, setuptools, tubeup(with ia and yt-dlp), ffmpeg ready
+
+
+#### Credit to @snakepeeker on the Archive of Pimps discord for the content of this tutorial
