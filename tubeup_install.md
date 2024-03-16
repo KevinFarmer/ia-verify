@@ -5,20 +5,25 @@
 
 ### Install Chocolatey
 Following these 5 steps: https://chocolatey.org/install
-	- Chocolatey is a package manager which can be used to install other software
+
+Note: Chocolatey is a package manager which can be used to install other software
 
 ### Install Python
 Type this line (source: https://docs.python-guide.org/starting/install3/win/#install3-windows)
+
 `choco install python`
-	- Note, you will likely need to restart after this
+
+Note: you will likely need to restart after this
 
 ### Check and upgrade pip:
 Pip is python's own package manager, which is used to install python libraries
+
 `py -m pip install -U pip`
 
 
 ### Install setuptools
 Otherwise it may throw an error that pkg_resources is missing
+
 `pip install setuptools`
 
 ### Install TubeUp
@@ -28,9 +33,8 @@ It will ask you whether you want to install a package for every package it downl
 
 
 ### Set up ffmpeg:
- * download an archive with ffmpeg, ffplay and ffprobe from here: 
-
- * Unarchive the folder and copy all three .exe from bin folder
+ * Download an archive with ffmpeg, ffplay and ffprobe from here: https://github.com/yt-dlp/FFmpeg-Builds#ffmpeg-static-auto-builds
+ * Unzip the folder and copy all three .exe from bin folder
  * Paste the three .exe files in C:\Python312\Scripts
 
 
