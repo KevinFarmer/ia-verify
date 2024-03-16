@@ -44,7 +44,7 @@ for i, id_list in enumerate(id_chunks):
     search_results = s.search_items(f'identifier:({id_search})', fields=['identifier', 'format'])
     found_ids = [result['identifier'] for result in search_results]
     missing_ids = list(set(id_list) - set(found_ids))
-    missing_ids_output = "\n".join(missing_ids)
+    missing_ids_output = "\n".join(missing_ids) + "\n"
     missing_id_file.write(missing_ids_output)
 
     for result in search_results:
