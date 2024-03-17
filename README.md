@@ -7,11 +7,12 @@ Enter your IA account email in the single quotes on line 1
 
 Optionally, decide whether you want to check thumbnails, and set line 2 to True/False appropriately
 
+> :warning: Any .webp thumbnails take time for IA to process into a format that they will display, and will get falsely flagged as missing while still processing
+
 Then run:
 
 `python verify_uploads.py`
 
-> :warning: Any .webp thumbnails take time for IA to process into a format that they will display, and will get falsely flagged as missing while still processing
 
 ## Output
 
@@ -31,6 +32,8 @@ Takes in an input file of youtube IDs or URLs, and determines which either haven
 Enter the path to your desired ID file on line 1
 
 Optionally, decide whether you want to check thumbnails, and set line 2 to True/False appropriately
+
+> :warning: Any .webp thumbnails take time for IA to process into a format that they will display, and will get falsely flagged as missing while still processing
 
 Then run:
 
