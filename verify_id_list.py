@@ -1,4 +1,4 @@
-ID_FILE = './facejam.txt'
+ID_FILE = './AllChannels.txt'
 SKIP_THUMBNAIL_CHECK = True
 CHUNK_SIZE = 250
 
@@ -31,6 +31,7 @@ problem_id_file = open(f'{file_name}_problem_ids_from_list.txt', 'w')
 contents = input_file.read()
 lines = contents.split('\n')
 ids = [line.removeprefix('https://www.youtube.com/watch?v=') for line in lines]
+ids = [id.removeprefix('https://www.youtube.com/shorts/') for id in ids]
 ids = [id for id in ids if id != '']
 ids = [f"youtube-{id}" for id in ids]
 
