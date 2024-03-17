@@ -5,7 +5,9 @@ To verify your Internet Archive items uploaded by TubeUp
 Enter your IA account email in the single quotes on line 1
 
 Optionally, decide whether you want to check thumbnails, and toggle line 2 True/False appropriately
-(I believe any .webp thumbnails take time to process, and can get falsely flagged while still processing)
+
+### Note
+Any .webp thumbnails take time for IA to process into a format that they will display, and will get falsely flagged as missing while still processing
 
 
 ## Output
