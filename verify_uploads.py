@@ -1,5 +1,5 @@
 EMAIL = ''
-SKIP_THUMBNAIL_CHECK = False
+SKIP_THUMBNAIL_CHECK = True
 
 import sys
 from internetarchive import get_session
