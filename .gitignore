@@ -161,3 +161,4 @@ cython_debug/
 
 upload_issues.txt
 problem_ids.txt
+*.txt
