@@ -71,7 +71,7 @@ for i, id_list in enumerate(id_chunks):
             youtube_id = id.removeprefix('youtube-')
             youtube_url = 'https://www.youtube.com/watch?v=' + youtube_id
             problem_id_file.write(youtube_url + '\n')
-    print(f"Finished batch {i} / {num}")
+    print(f"Finished batch {i+1} / {num}")
 
 input_file.close()
 missing_id_file.close()

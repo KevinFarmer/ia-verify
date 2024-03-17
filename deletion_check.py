@@ -24,7 +24,7 @@ urls = [line for line in lines if line.startswith('https://archive.org/details/'
 
 size = len(urls)
 for i, url in enumerate(urls):
-    print(f"Checking {url}\t({i}/{size})")
+    print(f"Checking {url}\t({i+1}/{size})")
     res = requests.get(url)
     is_deleted = ('This item is no longer available' in res.text)
 
