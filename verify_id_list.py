@@ -1,4 +1,4 @@
-ID_FILE = './AllChannels.txt'
+ID_FILE = './input/todayfriendsbest.txt'
 SKIP_THUMBNAIL_CHECK = True
 CHUNK_SIZE = 250
 
@@ -25,8 +25,8 @@ s = get_session()
 s.mount_http_adapter()
 
 input_file = open(ID_FILE, 'r')
-missing_id_file = open(f'{file_name}_missing_ids_from_list.txt', 'w')
-problem_id_file = open(f'{file_name}_problem_ids_from_list.txt', 'w')
+missing_id_file = open(f'output/{file_name}_missing_ids_from_list.txt', 'w')
+problem_id_file = open(f'output/{file_name}_problem_ids_from_list.txt', 'w')
 
 contents = input_file.read()
 lines = contents.split('\n')
@@ -47,6 +47,7 @@ for i, id_list in enumerate(id_chunks):
     missing_ids = list(set(id_list) - set(found_ids))
     if len(missing_ids) > 0:
         missing_ids_output = "\n".join(missing_ids) + "\n"
+        missing_ids_output = missing_ids_output.replace('youtube-', 'https://www.youtube.com/watch?v=')
         missing_id_file.write(missing_ids_output)
 
     for result in search_results:
