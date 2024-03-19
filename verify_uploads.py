@@ -1,5 +1,6 @@
-EMAIL = ''
+EMAIL = 'kevin.farmer96@gmail.com'
 SKIP_THUMBNAIL_CHECK = True
+IS_ROOSTER = False
 
 import sys
 from internetarchive import get_session
@@ -25,7 +26,9 @@ for result in search_results:
 
     id: str = result['identifier']
     # Skip uploads that aren't from tubeup
-    if not id.startswith('youtube-'):
+    if IS_ROOSTER and not id.startswith('roosterteeth-'):
+        continue
+    elif not id.startswith('youtube-'):
         continue
 
     files = set(result['format'])
@@ -40,11 +43,16 @@ for result in search_results:
     # print(result['format'])
     
     if (contains_video and contains_thumb and contains_info) == False:
-        missing = 'Missing: ' + ("" if contains_video else "Video,") + ("" if contains_thumb else "Thumbnail,") + ("" if contains_info else "info.json")
-        f.write(id + '\t  [' + ', '.join(result['format']) + ']\t\t' + missing + '\n')
+        if not IS_ROOSTER:
+            missing = 'Missing: ' + ("" if contains_video else "Video,") + ("" if contains_thumb else "Thumbnail,") + ("" if contains_info else "info.json")
+            f.write(id + '\t  [' + ', '.join(result['format']) + ']\t\t' + missing + '\n')
         
-        youtube_id = id.removeprefix('youtube-')
-        youtube_url = 'https://www.youtube.com/watch?v=' + youtube_id
-        f2.write(youtube_url + '\n')
+        if IS_ROOSTER:
+            f2.write(id + '\n')
+        else:
+            youtube_id = id.removeprefix('youtube-')
+            youtube_url = 'https://www.youtube.com/watch?v=' + youtube_id
+            f2.write(youtube_url + '\n')
 
 f.close()
+f2.close()
