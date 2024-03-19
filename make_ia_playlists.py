@@ -19,6 +19,15 @@ def process_playlist(playlist_id):
     # TODO sort videos / reverse order if 1st item is the latest
     playlist_videos = playlist.videos
     print('Number Of Videos In playlist: %s' % len(playlist_videos))
+   
+    playlist_videos = [vid for vid in playlist_videos]
+    reverse = False
+    if len(playlist_videos) > 1:
+        first_publish_date = playlist_videos[0].publish_date
+        last_publish_date = playlist_videos[-1].publish_date
+        if first_publish_date > last_publish_date:
+            reverse = True
+
     videos = []
     for vid in playlist_videos:
         video = {
@@ -27,6 +36,9 @@ def process_playlist(playlist_id):
             "url": f"https://archive.org/details/youtube-{vid.video_id}"
         }
         videos.append(video)
+
+    if reverse:
+        videos.reverse()
     playlist_info['videos'] = videos
 
     return playlist_info
@@ -41,32 +53,47 @@ def get_playlist_ids(playlist_html):
 
 
 
-input_file = open('./channels_with_playlists.txt', 'r')
+input_file = open('playlist_input.txt', 'r')
 
 contents = input_file.read()
-channel_urls = contents.split('\n')
-channel_urls.remove('')
+lines = contents.split('\n')
+while '' in lines:
+    lines.remove('')
+
+channels_dict = {}
+for line in lines:
+    channel_id, pl = line.split(',')
+    playlists = channels_dict.get(channel_id)
+    if playlists is None:
+        playlists = []
+    playlists.append(pl)
+    channels_dict[channel_id] = playlists
+    # TODO
+
+# channel_urls = ['https://www.youtube.com/@Letsplay']
 
 playlists_output = []
-for url in channel_urls:
-    print(url)
+for channel_id, playlist_ids in channels_dict.items():
+    print(channel_id)
+    url = f"https://www.youtube.com/{channel_id}"
     c = Channel(url)
     channel_name = c.channel_name
     print(f"Channel: {channel_name}")
     channel_dict = {}
     channel_dict['channel_name'] = channel_name
 
-    # TODO sort playlists by name
-    playlist_ids = get_playlist_ids(c.playlists_html)
+    # TODO pull playlists differently, this only gets the first page of ids
+    # playlist_ids = get_playlist_ids(c.playlists_html)
     channel_playlists = []
     for playlist_id in playlist_ids:
         playlist_info = process_playlist(playlist_id)
         channel_playlists.append(playlist_info)
 
+    channel_playlists = sorted(channel_playlists, key=lambda x: x['title'])
     channel_dict['playlists'] = channel_playlists
     playlists_output.append(channel_dict)
 
-with open('playlist_output_v2.json', 'w') as outfile:
-    json.dump(playlists_output, outfile)
+with open('playlist_output_v3.json', 'w') as outfile:
+    json.dump(playlists_output, outfile, default=str)
 
 input_file.close()
