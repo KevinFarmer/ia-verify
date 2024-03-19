@@ -1,4 +1,4 @@
-EMAIL = 'kevin.farmer96@gmail.com'
+EMAIL = ''
 SKIP_THUMBNAIL_CHECK = True
 IS_ROOSTER = False
 
@@ -14,17 +14,19 @@ if EMAIL == '':
     sys.exit(1)
 
 f = open('upload_issues.txt', 'w')
-f2 = open('problem_ids.txt', 'w')
+f2 = open('original_urls.txt', 'w')
+f3 = open('archive_urls.txt', 'w')
 
 s = get_session()
 s.mount_http_adapter()
-search_results = s.search_items(f'uploader:{EMAIL}', fields=['identifier', 'format'])
+search_results = s.search_items(f'uploader:{EMAIL}', fields=['identifier', 'format', 'originalurl'])
 for result in search_results:
     contains_video = False
     contains_info = False
     contains_thumb = False
 
     id: str = result['identifier']
+    original_url: str = result['originalurl']
     # Skip uploads that aren't from tubeup
     if IS_ROOSTER and not id.startswith('roosterteeth-'):
         continue
@@ -48,7 +50,8 @@ for result in search_results:
             f.write(id + '\t  [' + ', '.join(result['format']) + ']\t\t' + missing + '\n')
         
         if IS_ROOSTER:
-            f2.write(id + '\n')
+            f2.write(original_url + '\n')
+            f3.write(f"https://archive.org/details/{id}" + '\n')
         else:
             youtube_id = id.removeprefix('youtube-')
             youtube_url = 'https://www.youtube.com/watch?v=' + youtube_id
@@ -56,3 +59,4 @@ for result in search_results:
 
 f.close()
 f2.close()
+f3.close()
