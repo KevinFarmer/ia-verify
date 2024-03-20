@@ -26,12 +26,13 @@ for result in search_results:
     contains_thumb = False
 
     id: str = result['identifier']
-    original_url: str = result['originalurl']
     # Skip uploads that aren't from tubeup
     if IS_ROOSTER and not id.startswith('roosterteeth-'):
         continue
     elif not IS_ROOSTER and not id.startswith('youtube-'):
         continue
+
+    original_url: str = result['originalurl']
 
     files = set(result['format'])
     if video_file_types & files:
