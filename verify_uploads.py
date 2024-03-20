@@ -14,12 +14,12 @@ if EMAIL == '':
     sys.exit(1)
 
 f = open('upload_issues.txt', 'w')
-f2 = open('original_urls.txt', 'w')
-f3 = open('archive_urls.txt', 'w')
+f2 = open('incomplete_original_urls.txt', 'w')
+f3 = open('incomplete_archive_urls.txt', 'w')
 
 s = get_session()
 s.mount_http_adapter()
-search_results = s.search_items(f'uploader:{EMAIL}', fields=['identifier', 'format', 'originalurl'])
+search_results = s.search_items(f'uploader:({EMAIL})', fields=['identifier', 'format', 'originalurl'])
 for result in search_results:
     contains_video = False
     contains_info = False
@@ -30,7 +30,7 @@ for result in search_results:
     # Skip uploads that aren't from tubeup
     if IS_ROOSTER and not id.startswith('roosterteeth-'):
         continue
-    elif not id.startswith('youtube-'):
+    elif not IS_ROOSTER and not id.startswith('youtube-'):
         continue
 
     files = set(result['format'])
@@ -40,9 +40,6 @@ for result in search_results:
         contains_thumb = True
     if info_file_types & files:
         contains_info = True
-
-    # print(result['identifier'])
-    # print(result['format'])
     
     if (contains_video and contains_thumb and contains_info) == False:
         if not IS_ROOSTER:
