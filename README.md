@@ -20,9 +20,12 @@ Then run:
 A text file containing any IA items missing data
 Includes the identifier, the file formats currently in the item, and whether video/thumbnail/info.json is missing
 
-### problem_ids.txt
+### incomplete_original_urls.txt
 A text file of the youtube URLs for the incomplete items, which can be re-run using tubeup -i
 
+### incomplete_archive_urls.txt
+A text file of the archive.org URLs for the incomplete items
+> :warning: DO NOT RUN TUBEUP ON THIS FILE
 
 # verify_id_list.py
 
