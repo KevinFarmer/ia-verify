@@ -1,4 +1,4 @@
-EMAIL = 'kevin.farmer96@gmail.com'
+EMAIL = ''
 SKIP_THUMBNAIL_CHECK = True
 IS_ROOSTER = False
 
