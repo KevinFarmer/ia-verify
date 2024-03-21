@@ -1,4 +1,4 @@
-EMAIL = ''
+EMAIL = 'kevin.farmer96@gmail.com'
 SKIP_THUMBNAIL_CHECK = True
 IS_ROOSTER = False
 
@@ -54,6 +54,7 @@ for result in search_results:
             youtube_id = id.removeprefix('youtube-')
             youtube_url = 'https://www.youtube.com/watch?v=' + youtube_id
             f2.write(youtube_url + '\n')
+            f3.write(f"https://archive.org/details/{id}" + '\n')
 
 f.close()
 f2.close()
