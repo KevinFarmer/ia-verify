@@ -1,4 +1,4 @@
-ID_FILE = './input/todayfriendsbest.txt'
+ID_FILE = './missing_ids2.txt'
 SKIP_THUMBNAIL_CHECK = True
 CHUNK_SIZE = 250
 
@@ -25,8 +25,8 @@ s = get_session()
 s.mount_http_adapter()
 
 input_file = open(ID_FILE, 'r')
-missing_id_file = open(f'output/{file_name}_missing_ids_from_list.txt', 'w')
-problem_id_file = open(f'output/{file_name}_problem_ids_from_list.txt', 'w')
+missing_id_file = open(f'{file_name}_missing_ids_from_list.txt', 'w')
+problem_id_file = open(f'{file_name}_problem_ids_from_list.txt', 'w')
 
 contents = input_file.read()
 lines = contents.split('\n')
