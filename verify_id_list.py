@@ -6,7 +6,7 @@ import sys
 from internetarchive import get_session
 
 video_file_types = {'Matroska', 'WebM', 'MPEG4'}
-thumb_file_types = {'JPEG', 'WebP', 'Thumbnail'}
+thumb_file_types = {'JPEG', 'WebP', 'PNG', 'Thumbnail'}
 info_file_types = {'JSON'}
 
 if ID_FILE == '':
